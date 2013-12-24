@@ -70,7 +70,7 @@ class Paddle
 		@object = new THREE.SceneUtils.createMultiMaterialObject(new THREE.CubeGeometry(@width,@height,1),materials)
 		@object.position.z = plane
 
-		@light = new THREE.PointLight(color,2);
+		@light = new THREE.PointLight(color,1);
 		@light.position.z = plane
 
 	update:()->
@@ -128,24 +128,27 @@ renderer.clear()
 
  
 bottomWall = new THREE.Mesh(new THREE.CubeGeometry(32,1,60),
-               new THREE.MeshLambertMaterial({color: 0x111111}))
+               new THREE.MeshLambertMaterial({color: 0x666666}))
 bottomWall.position.set(0,-10.5,0)
 scene.add(bottomWall)
 
 topWall = new THREE.Mesh(new THREE.CubeGeometry(32,1,60),
-               new THREE.MeshLambertMaterial({color: 0x111111}))
+               new THREE.MeshLambertMaterial({color: 0x666666}))
 topWall.position.set(0,10.5,0)
 scene.add(topWall)
 
 leftWall = new THREE.Mesh(new THREE.CubeGeometry(1,20,60),
-               new THREE.MeshLambertMaterial({color: 0x111111}))
+               new THREE.MeshLambertMaterial({color: 0x666666}))
 leftWall.position.set(-15.5,0,0)
 scene.add(leftWall)
 
 rightWall = new THREE.Mesh(new THREE.CubeGeometry(1,20,60),
-               new THREE.MeshLambertMaterial({color: 0x111111}))
+               new THREE.MeshLambertMaterial({color: 0x666666}))
 rightWall.position.set(15.5,0,0)
 scene.add(rightWall)
+
+mainLight = new THREE.PointLight(0xFFFFFF,0.5)
+scene.add(mainLight)
 
 paddleMaterials = [
 	new THREE.MeshLambertMaterial({color:0xFF7F00,opacity:0.5,transparent:true}),

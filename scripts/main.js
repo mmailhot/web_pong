@@ -1,5 +1,5 @@
 (function() {
-  var Ball, GAME_HEIGHT, GAME_WIDTH, MOUSE_X, MOUSE_Y, O, Paddle, PlayerController, RandomController, SlowTrackerController, ball, bottomWall, camera, clamp, enemyPaddle, leftWall, paddleMaterials, paddleMaterials2, playerPaddle, pointLight, reflectMatrix, renderer, rightWall, scene, shadow, shadowMaterial, shadowTexture, topWall, update;
+  var Ball, GAME_HEIGHT, GAME_WIDTH, MOUSE_X, MOUSE_Y, O, Paddle, PlayerController, RandomController, SlowTrackerController, ball, bottomWall, camera, clamp, enemyPaddle, leftWall, mainLight, paddleMaterials, paddleMaterials2, playerPaddle, pointLight, reflectMatrix, renderer, rightWall, scene, shadow, shadowMaterial, shadowTexture, topWall, update;
 
   O = {
     WIDTH: 900,
@@ -85,7 +85,7 @@
       ];
       this.object = new THREE.SceneUtils.createMultiMaterialObject(new THREE.CubeGeometry(this.width, this.height, 1), materials);
       this.object.position.z = plane;
-      this.light = new THREE.PointLight(color, 2);
+      this.light = new THREE.PointLight(color, 1);
       this.light.position.z = plane;
     }
 
@@ -186,7 +186,7 @@
   renderer.clear();
 
   bottomWall = new THREE.Mesh(new THREE.CubeGeometry(32, 1, 60), new THREE.MeshLambertMaterial({
-    color: 0x111111
+    color: 0x666666
   }));
 
   bottomWall.position.set(0, -10.5, 0);
@@ -194,7 +194,7 @@
   scene.add(bottomWall);
 
   topWall = new THREE.Mesh(new THREE.CubeGeometry(32, 1, 60), new THREE.MeshLambertMaterial({
-    color: 0x111111
+    color: 0x666666
   }));
 
   topWall.position.set(0, 10.5, 0);
@@ -202,7 +202,7 @@
   scene.add(topWall);
 
   leftWall = new THREE.Mesh(new THREE.CubeGeometry(1, 20, 60), new THREE.MeshLambertMaterial({
-    color: 0x111111
+    color: 0x666666
   }));
 
   leftWall.position.set(-15.5, 0, 0);
@@ -210,12 +210,16 @@
   scene.add(leftWall);
 
   rightWall = new THREE.Mesh(new THREE.CubeGeometry(1, 20, 60), new THREE.MeshLambertMaterial({
-    color: 0x111111
+    color: 0x666666
   }));
 
   rightWall.position.set(15.5, 0, 0);
 
   scene.add(rightWall);
+
+  mainLight = new THREE.PointLight(0xFFFFFF, 0.5);
+
+  scene.add(mainLight);
 
   paddleMaterials = [
     new THREE.MeshLambertMaterial({
