@@ -11,3 +11,19 @@ body,html,#container{
 	background: #000;
 	padding-top:20px;
 }
+
+#instructions{
+	color:#fff;
+	font-family:sans-serif;
+}
+
+#instructions a {
+	color:#fff;
+}
+
+#scores{
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size:36px;
+	color:#fff;
+}
